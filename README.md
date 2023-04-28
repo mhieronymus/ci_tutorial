@@ -39,6 +39,6 @@ Note: Adding `..` to `sys.path` allows you to import functions from files in the
 
 Have you done that? Then continue with adding a GitHub Action or use GitLab CI.
 - Create a workflow/pipeline that prints something.
-- Add a job/stage that checks if the code is stylish
+- Add a job/stage that checks if the code is stylish (watch out for the comments!)
 - Choose one or more functions or write some yourself and create test functions.
 - Add another job/stage that uses the test functions

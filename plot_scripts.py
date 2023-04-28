@@ -6,8 +6,6 @@ import panel as pn
 import xarray as xr
 
 logging.getLogger('matplotlib.font_manager').disabled = True
-
-
 def plot_418():
     """
     Just try me.
@@ -42,8 +40,6 @@ def plot_418():
             '"Stove Ownership" from xkcd by Randall Munroe',
             ha='center')
     return fig
-
-
 def plot_grid(grbs, width, height, cmap="kbc_r", title=None):
     """
     Interactive plot of gridded data.
@@ -55,6 +51,9 @@ def plot_grid(grbs, width, height, cmap="kbc_r", title=None):
     :param title: Title of the plot
     :return: holoviews.core.spaces.DynamicMap
     """
+
+
+
     return grbs.hvplot.image(x="lon_0", y="lat_0", cmap=cmap, height=height, width=width, title=title)
 
 
@@ -65,7 +64,7 @@ def load_data(filepath="../../data/icon_output.grib2"):
     :param filepath: Path and name of the file to load
     :return: xarray.Dataset
     """
-    return xr.open_dataset(
+    return xr.open_dataset(# I'm such a useful comment!
         filepath,
         engine="pynio",
     )
@@ -84,8 +83,8 @@ def create_widget(grbs):
         options=[
             "RdBu",
             "viridis",
-            "Blues",
-            "Reds",
+            "Blues", # These are some blue colors
+            "Reds", # And these are red colors. Maybe we should do some Red vs Blue? Lol, rofl and more weird comments.
             "PiYG",
             "PRGn",
             "BrBG",
@@ -95,12 +94,7 @@ def create_widget(grbs):
             "kbc_r",
         ],
     )
-    width_slider = pn.widgets.IntSlider(
-        name="Width in pixels",
-        start=300,
-        end=3000,
-        step=150,
-        value=1200,
+    width_slider = pn.widgets.IntSlider( name="Width in pixels",  start=300,  end=3000,    step=150,    value=1200,
     )
     height_slider = pn.widgets.IntSlider(
         name="Height in pixels",
@@ -123,15 +117,4 @@ def create_widget(grbs):
             title=title_widget,
         )
     )
-    return pn.Column(
-        "#I am interactive",
-        pn.Row(
-            width_slider,
-            height_slider,
-        ),
-        pn.Row(
-            title_widget,
-            color_select,
-        ),
-        plot_pane,
-    )
+    return pn.Column("#I am interactive", pn.Row(width_slider, height_slider, ) , pn.Row( title_widget,  color_select  ), plot_pane )

@@ -1,0 +1,17 @@
+services:
+  regrid:
+    image: deutscherwetterdienst/regrid:icon-eu-eps-samples
+    container_name: regrid_sample
+    environment:
+      - OUTPUT_FILE=/data/samples/shared/icon_output.grib2
+
+  lab:
+    image: jupyter:example
+    container_name: jupyter_regrid
+    build: .
+    volumes:
+      - <your/persistent/path>:/app/notebooks
+      - app-volume:/data
+
+volumes:
+  app-volume:
